@@ -127,7 +127,23 @@
     async function listArticles() {
         const response = await fetch('/article/list');
         const data = await response.json();
-        listCards(data);
+        if (data.length == 0) {
+            document.getElementById('content').innerHTML = `
+            <div class="col-md-12">
+                <div class="container">
+                    <section class="mx-auto my-5" style="max-width: 23rem;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">No hay artículos</h5>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            `;
+        } else {
+            listCards(data);
+        }
     }
 
 
