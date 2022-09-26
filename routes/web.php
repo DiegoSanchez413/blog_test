@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/api', [APIController::class, 'getAPI']);
+Route::get('/random-item', [APIController::class, 'randomItem']);
+Route::get('/search-by-text/{text}', [APIController::class, 'searchByText']);
+
+Route::get('/list-categories', [APIController::class, 'listCategories']);
+Route::get('/search-by-category/{category}', [APIController::class, 'searchByCategory']);
